@@ -92,7 +92,7 @@ input {
 
 .login-button {
   background-color: #FFD700; /* Amarelo SUS */
-  color: #004382;
+  color: var(--button-text-color);
   padding: 15px;
   border: none;
   border-radius: 5px;

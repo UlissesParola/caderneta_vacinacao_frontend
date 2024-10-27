@@ -1,0 +1,112 @@
+/* Importando a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.cadastro-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  height: 700px; /* Ajuste a altura conforme necessário */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  margin: 40px auto;
+}
+
+.cadastro-image {
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Ocupa 1/3 da largura */
+  padding: 20px;
+}
+
+.cadastro-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.cadastro-form {
+  padding: 40px;
+  background-color: #f4f8ff; /* Fundo suave */
+  flex: 2; /* Ocupa 2/3 da largura */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.form-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group > div {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.cadastro-button {
+  background-color: var(--button-bg-color); /* Amarelo SUS */
+  color: var(--button-text-color);
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 20px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.cadastro-button:hover {
+  background-color: #e0b000;
+}
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      height: auto; /* Ajusta a altura para dispositivos móveis */
+    }
+  
+    .login-image {
+      display: none; /* Esconde a imagem em telas menores */
+    }
+  
+    .login-form {
+      padding: 30px 20px;
+    }
+  }

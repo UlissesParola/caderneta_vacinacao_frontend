@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importando a fonte global */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Estilos globais */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; /* Definindo a fonte global */
+  background-color: #f0f0f0; /* Cor de fundo padrão */
+  color: #333; /* Cor de texto padrão */
+}
+
+/* Reset CSS básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* Configurações de cores e temas globais */
+:root {
+  --primary-color: #ffcf00; /* Cor primária: Amarelo SUS */
+  --secondary-color: #f4f8ff; /* Cor de fundo suave */
+  --text-color: #333;
+  --text-light-color: #555;
+  --button-bg-color: #ffcf00; /* Cor de fundo do botão */
+  --button-text-color: #004382; /* Cor do texto do botão */
+  --button-hover-bg-color: #e0b000; /* Cor de fundo do botão ao passar o mouse */
+  --image-bg-color:#ffcf00;
+}
+
+
+
+/* Estilo de botões global */
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  display: inline-block;
+  text-align: center;
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+/* Inputs e textos para herdar a fonte global */
+input, button, textarea, select, label {
+  font-family: 'Poppins', sans-serif;
+}
