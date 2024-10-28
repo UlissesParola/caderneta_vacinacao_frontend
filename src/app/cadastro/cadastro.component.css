@@ -1,8 +1,8 @@
 /* Importando a fonte Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
@@ -12,12 +12,12 @@ body {
   display: flex;
   max-width: 1200px;
   width: 100%;
-  height: 700px; /* Ajuste a altura conforme necessário */
+  height: 100vh; /* Use 100% da altura da viewport */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  margin: 40px auto;
+  margin: 0 auto; /* Remove margens verticais */
 }
 
 .cadastro-image {
@@ -36,12 +36,13 @@ body {
 }
 
 .cadastro-form {
-  padding: 40px;
+  padding: 5% 5% 2% 5%;
   background-color: #f4f8ff; /* Fundo suave */
   flex: 2; /* Ocupa 2/3 da largura */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* Distribui espaço para centralizar conteúdo */
+  overflow-y: auto; /* Permite rolagem se necessário */
 }
 
 h2 {
@@ -77,36 +78,60 @@ input {
   font-size: 1rem;
 }
 
-.cadastro-button {
-  background-color: var(--button-bg-color); /* Amarelo SUS */
-  color: var(--button-text-color);
-  padding: 15px;
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Estilo do botão Voltar */
+.voltar-button {
+  background-color: var(
+    --secondary-button-bg-color
+  ); /* Cor cinza para o botão Voltar */
+  color: var(--secondary-button-text-color);
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1rem;
   font-weight: 600;
-  margin-top: 20px;
-  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.voltar-button:hover {
+  background-color: #aaaaaa;
+}
+
+.cadastro-button {
+  background-color: var(primary-button-bg-color); /* Amarelo SUS */
+  color: var(primary-button-text-color);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
   transition: background-color 0.3s;
 }
 
 .cadastro-button:hover {
-  background-color: #e0b000;
+  background-color: var(--button-hover-bg-color); /* Cor ao passar o mouse */
 }
 
 /* Ajustes de responsividade */
 @media (max-width: 768px) {
-    .login-container {
-      flex-direction: column;
-      height: auto; /* Ajusta a altura para dispositivos móveis */
-    }
-  
-    .login-image {
-      display: none; /* Esconde a imagem em telas menores */
-    }
-  
-    .login-form {
-      padding: 30px 20px;
-    }
+  .cadastro-container {
+    flex-direction: column;
+    height: auto; /* Ajusta a altura para dispositivos móveis */
   }
+
+  .cadastro-image {
+    display: none; /* Esconde a imagem em telas menores */
+  }
+
+  .cadastro-form {
+    padding: 30px 20px;
+  }
+}

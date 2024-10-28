@@ -1,19 +1,35 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UsuarioService, CreateUsuarioRequest } from '../services/usuario.service';
+import {
+  UsuarioService,
+  CreateUsuarioRequest,
+} from '../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css'],
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class CadastroComponent {
   cadastroForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService) {
+  constructor(
+    private fb: FormBuilder,
+    private usuarioService: UsuarioService,
+    private router: Router
+  ) {
     this.cadastroForm = this.fb.group({
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
@@ -23,7 +39,7 @@ export class CadastroComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       dataNascimento: ['', Validators.required],
-      sexo: ['', Validators.required]
+      sexo: ['', Validators.required],
     });
   }
 
@@ -33,7 +49,9 @@ export class CadastroComponent {
     const confirmEmail = this.cadastroForm.get('confirmEmail')?.value;
 
     if (email !== confirmEmail) {
-      this.cadastroForm.get('confirmEmail')?.setErrors({ emailsMismatch: true });
+      this.cadastroForm
+        .get('confirmEmail')
+        ?.setErrors({ emailsMismatch: true });
     } else {
       this.cadastroForm.get('confirmEmail')?.setErrors(null);
     }
@@ -45,7 +63,9 @@ export class CadastroComponent {
     const confirmPassword = this.cadastroForm.get('confirmPassword')?.value;
 
     if (password !== confirmPassword) {
-      this.cadastroForm.get('confirmPassword')?.setErrors({ passwordsMismatch: true });
+      this.cadastroForm
+        .get('confirmPassword')
+        ?.setErrors({ passwordsMismatch: true });
     } else {
       this.cadastroForm.get('confirmPassword')?.setErrors(null);
     }
@@ -64,16 +84,16 @@ export class CadastroComponent {
         Email: formData.email,
         Password: formData.password,
         DataNascimento: formData.dataNascimento,
-        Sexo: formData.sexo
+        Sexo: formData.sexo,
       };
 
       // Utilizando o serviço para enviar os dados
       this.usuarioService.createUsuario(usuarioData).subscribe(
-        response => {
+        (response) => {
           console.log('Usuário cadastrado com sucesso!', response);
           // Adicione lógica de sucesso aqui, como redirecionamento
         },
-        error => {
+        (error) => {
           console.error('Erro ao cadastrar usuário', error);
           // Adicione lógica de erro aqui, como exibir mensagem ao usuário
         }
@@ -81,5 +101,9 @@ export class CadastroComponent {
     } else {
       this.cadastroForm.markAllAsTouched();
     }
+  }
+
+  onBack() {
+    this.router.navigate(['/login']); // Redirecionando para a página de login
   }
 }

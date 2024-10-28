@@ -1,30 +1,14 @@
 /* Importando a fonte sugerida do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif !important;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  h2, label, input, .forgot-password, .register-link a, button {
-    font-family: 'Poppins', sans-serif !important;
-  }
-
 .login-container {
   display: flex;
   max-width: 1200px;
   width: 100%;
-  height: 600px; /* Altura fixa, pode ser ajustada conforme necessário */
+  height: 100vh; /* Use 100% da altura da viewport */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
+  margin: 0 auto; /* Remove margens verticais */
 }
 
 .login-image {
@@ -43,7 +27,7 @@ body {
 }
 
 .login-form {
-  padding: 50px 40px;
+  padding: 8% 5%;
   background-color: #f4f8ff; /* Fundo suave */
   flex: 1; /* Ocupa 1/3 da largura */
   display: flex;
@@ -91,7 +75,7 @@ input {
 }
 
 .login-button {
-  background-color: #FFD700; /* Amarelo SUS */
+  background-color: #ffd700; /* Amarelo SUS */
   color: var(--button-text-color);
   padding: 15px;
   border: none;
