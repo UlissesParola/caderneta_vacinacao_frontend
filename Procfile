@@ -1,1 +1,1 @@
-web: serve -s dist/caderneta-vacinacao
+web: serve -s dist/caderneta-vacinacao/browser
