@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // Modelo de dados para criar o usuário
 export interface CreateUsuarioRequest {
@@ -14,10 +15,11 @@ export interface CreateUsuarioRequest {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuarioService {
-  private apiUrl = 'https://seu-backend-url.com/api/usuarios'; // Defina a URL base da API aqui
+  private baseUrl = environment.apiUrl;
+  private apiUrl = this.baseUrl + '/usuarios';
 
   constructor(private http: HttpClient) {}
 
