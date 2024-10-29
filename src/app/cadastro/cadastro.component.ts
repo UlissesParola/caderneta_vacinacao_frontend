@@ -3,9 +3,6 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -24,6 +21,7 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent {
   cadastroForm: FormGroup;
+  errorMessage: string | null = null; // Variável para armazenar a mensagem de erro
 
   constructor(
     private fb: FormBuilder,
@@ -76,7 +74,6 @@ export class CadastroComponent {
     if (this.cadastroForm.valid) {
       const formData = this.cadastroForm.value;
 
-      // Criando o objeto para envio ao backend
       const usuarioData: CreateUsuarioRequest = {
         Nome: formData.nome,
         Sobrenome: formData.sobrenome,
@@ -91,11 +88,23 @@ export class CadastroComponent {
       this.usuarioService.createUsuario(usuarioData).subscribe(
         (response) => {
           console.log('Usuário cadastrado com sucesso!', response);
-          // Adicione lógica de sucesso aqui, como redirecionamento
+          // Adicione lógica de sucesso, como redirecionamento
         },
         (error) => {
           console.error('Erro ao cadastrar usuário', error);
-          // Adicione lógica de erro aqui, como exibir mensagem ao usuário
+          this.errorMessage =
+            error.error?.Message || 'Erro ao cadastrar usuário';
+
+          // Mapear erros específicos de senha
+          if (error.error?.Errors) {
+            const passwordErrors = error.error.Errors.Password;
+            if (passwordErrors?.includes('PasswordRequiresLower')) {
+              this.errorMessage += ' - A senha deve conter letras minúsculas.';
+            }
+            if (passwordErrors?.includes('PasswordRequiresUpper')) {
+              this.errorMessage += ' - A senha deve conter letras maiúsculas.';
+            }
+          }
         }
       );
     } else {
@@ -103,7 +112,8 @@ export class CadastroComponent {
     }
   }
 
+  // Redirecionar para a página de login
   onBack() {
-    this.router.navigate(['/login']); // Redirecionando para a página de login
+    this.router.navigate(['/login']);
   }
 }

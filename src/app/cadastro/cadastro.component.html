@@ -4,6 +4,16 @@
   </div>
   <div class="cadastro-form">
     <h2>Cadastro</h2>
+
+    <!-- Mensagem de erro geral vinda da API -->
+    <div
+      *ngIf="errorMessage"
+      class="error-message"
+      style="color: red; margin-bottom: 1em"
+    >
+      {{ errorMessage }}
+    </div>
+
     <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <div>
@@ -25,6 +35,7 @@
           />
         </div>
       </div>
+
       <div class="form-group">
         <div>
           <label for="cpf">CPF</label>
@@ -44,6 +55,7 @@
           />
         </div>
       </div>
+
       <div class="form-group">
         <div>
           <label for="sexo">Sexo</label>
@@ -55,6 +67,7 @@
           />
         </div>
       </div>
+
       <div class="form-group">
         <div>
           <label for="email">E-mail</label>
@@ -116,6 +129,7 @@
           </div>
         </div>
       </div>
+
       <div class="action-buttons">
         <button type="button" class="voltar-button" (click)="onBack()">
           Voltar
